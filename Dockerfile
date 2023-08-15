@@ -1,4 +1,4 @@
-FROM python:3.11-alpine3.18
+FROM python:3.9-alpine3.12
 LABEL maintainer="leandromello"
 
 ENV PYTHONUNBUFFERED 1
