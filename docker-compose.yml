@@ -5,6 +5,8 @@ services:
     container_name: creditcard_backend
     build:
       context: .
+      args:
+        - DEV=true
       dockerfile: ./Dockerfile
     ports:
       - "8000:8000"
