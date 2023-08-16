@@ -1,13 +1,11 @@
 version: "3.9"
 
 services:
-  backend:
-    container_name: creditcard_backend
+  app:
     build:
       context: .
       args:
         - DEV=true
-      dockerfile: ./Dockerfile
     ports:
       - "8000:8000"
     volumes:
