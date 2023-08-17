@@ -23,6 +23,10 @@ runserver:
 superuser:
 	python manage.py createsuperuser
 
+.PHONY: test
+test:
+	python manage.py test
+
 .PHONY: update
 update: install migrate
 
@@ -38,5 +42,6 @@ run:
 .PHONY: down
 down: 
 	docker-compose down
+
 
 
