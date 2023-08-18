@@ -1,14 +1,14 @@
-Desafio técnico Python
-Alguns requisitos
-Deixe o código em inglês;
-Use Git;
-Procure fazer micro commits que são muitos commits com menos código isso nos ajuda a compreender a sua lógica;
-Pergunte nos sobre qualquer dúvida que venha a surgir durante o desenvolvimento;
 Documente detalhadamente quaisquer referencias/ferramentas que vc pesquisar;
+
 Crie um repositório público e nos passe o link para acompanharmos o desenvolvimento;
+
 Faça testes automatizados (unitários e de integração);
+
 Problema
-A MAISTODOS LTDA está lançando um sistema inovador de cadastros de cartões de crédito e precisa garantir toda a qualidade e padronização dos dados. E esse sistema será uma API simples de cadastro de cartões de crédito, e o sistema irá receber no cadastro o seguinte payload:
+
+A MAISTODOS LTDA está lançando um sistema inovador de cadastros de cartões de crédito
+e precisa garantir toda a qualidade e padronização dos dados. E esse sistema será uma API
+simples de cadastro de cartões de crédito, e o sistema irá receber no cadastro o seguinte payload:
 
 {
     "exp_date": "02/2026",
@@ -16,6 +16,7 @@ A MAISTODOS LTDA está lançando um sistema inovador de cadastros de cartões de
     "number": "0000000000000001",
     "cvv": "123",
 }
+
 Como não é um cadastro qualquer, esses dados precisam passar por uma validação criteriosa e específica:
 
 exp_date
