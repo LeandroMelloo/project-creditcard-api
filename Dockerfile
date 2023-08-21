@@ -1,34 +1,22 @@
-FROM python:3.9-alpine3.13
-LABEL maintainer="leandromello"
+# Use an official Python runtime as a parent image
+FROM python:3.8
 
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements.txt /tmp/requirements.txt
-COPY ./requirements.dev.txt /tmp/requirements.dev.txt
-COPY ./app /app
-
+# Set the working directory
 WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the project files into the container
+COPY . /app/
+
+# Expose port 8000 for the Django application
 EXPOSE 8001
 
-ARG DEV=false
-RUN python -m venv /py && \
-    /py/bin/pip install --upgrade pip && \
-    # adicionando o apk e instalando o cliente PostgreSQL dentro da nossa imagem Alpine
-    apk add --update --no-cache postgresql-client jpeg-dev && \
-    # pacote de dependência virtual .tmp-build-deps
-    apk add --update --no-cache --virtual .tmp-build-deps \ 
-        build-base postgresql-dev musl-dev zlib zlib-dev linux-headers && \
-    /py/bin/pip install -r /tmp/requirements.txt && \
-    if [ $DEV = "true" ]; \
-        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
-    fi && \
-    rm -rf /tmp && \
-    apk del .tmp-build-deps && \
-    adduser \
-        --disabled-password \
-        --no-create-home \
-        app
-
-ENV PATH="/py/bin:$PATH"
-
-USER app
+# Start the Django development server
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
